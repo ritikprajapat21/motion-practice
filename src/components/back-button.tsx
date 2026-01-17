@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 
 export default function BackButton() {
 	return (
-		<div className="flex justify-start w-full">
+		<div className="flex justify-start min-w-xl">
 			<Link to="..">
 				<motion.button
 					whileHover={{ scale: 1.03 }}
@@ -18,7 +18,7 @@ export default function BackButton() {
 	);
 }
 
-function ArrowLeft(props: React.SVGProps<React.SVGElementType>) {
+function ArrowLeft(props: React.SVGProps<SVGSVGElement>) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

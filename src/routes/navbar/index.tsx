@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, useMotionTemplate, useSpring } from "motion/react";
-import { useRef, useState } from "react";
+import { motion } from "motion/react";
+import { useState } from "react";
 import BackButton from "@/components/back-button";
 
 export const Route = createFileRoute("/navbar/")({

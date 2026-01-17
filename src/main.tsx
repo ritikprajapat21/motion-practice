@@ -16,6 +16,21 @@ const router = createRouter({
 	scrollRestoration: true,
 	defaultStructuralSharing: true,
 	defaultPreloadStaleTime: 0,
+	// defaultViewTransition: true,
+	defaultViewTransition: {
+		types: ({ fromLocation, toLocation }) => {
+			let direction = "none";
+
+			if (fromLocation) {
+				const fromIndex = fromLocation.state.__TSR_index;
+				const toIndex = toLocation.state.__TSR_index;
+
+				direction = fromIndex > toIndex ? "right" : "left";
+			}
+
+			return [`slide-${direction}`];
+		},
+	},
 });
 
 // Register the router instance for type safety

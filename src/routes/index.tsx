@@ -9,7 +9,7 @@ function App() {
 		<div className="text-center gap-4 flex flex-col items-center justify-center min-h-screen bg-neutral-800 text-neutral-200">
 			<Link to="/navbar">Navbar</Link>
 			<Link to="/text-reveal">Text Reveal</Link>
-			<Link to="/departure-board">Departure Board</Link>
+			<Link to="/shining-button">Shining Button</Link>
 		</div>
 	);
 }

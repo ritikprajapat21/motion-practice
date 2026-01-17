@@ -9,16 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as DepartureBoardRouteImport } from './routes/departure-board'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TextRevealIndexRouteImport } from './routes/text-reveal/index'
+import { Route as ShiningButtonIndexRouteImport } from './routes/shining-button/index'
 import { Route as NavbarIndexRouteImport } from './routes/navbar/index'
 
-const DepartureBoardRoute = DepartureBoardRouteImport.update({
-  id: '/departure-board',
-  path: '/departure-board',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -29,6 +24,11 @@ const TextRevealIndexRoute = TextRevealIndexRouteImport.update({
   path: '/text-reveal/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShiningButtonIndexRoute = ShiningButtonIndexRouteImport.update({
+  id: '/shining-button/',
+  path: '/shining-button/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NavbarIndexRoute = NavbarIndexRouteImport.update({
   id: '/navbar/',
   path: '/navbar/',
@@ -37,47 +37,40 @@ const NavbarIndexRoute = NavbarIndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/departure-board': typeof DepartureBoardRoute
   '/navbar': typeof NavbarIndexRoute
+  '/shining-button': typeof ShiningButtonIndexRoute
   '/text-reveal': typeof TextRevealIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/departure-board': typeof DepartureBoardRoute
   '/navbar': typeof NavbarIndexRoute
+  '/shining-button': typeof ShiningButtonIndexRoute
   '/text-reveal': typeof TextRevealIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/departure-board': typeof DepartureBoardRoute
   '/navbar/': typeof NavbarIndexRoute
+  '/shining-button/': typeof ShiningButtonIndexRoute
   '/text-reveal/': typeof TextRevealIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/departure-board' | '/navbar' | '/text-reveal'
+  fullPaths: '/' | '/navbar' | '/shining-button' | '/text-reveal'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/departure-board' | '/navbar' | '/text-reveal'
-  id: '__root__' | '/' | '/departure-board' | '/navbar/' | '/text-reveal/'
+  to: '/' | '/navbar' | '/shining-button' | '/text-reveal'
+  id: '__root__' | '/' | '/navbar/' | '/shining-button/' | '/text-reveal/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DepartureBoardRoute: typeof DepartureBoardRoute
   NavbarIndexRoute: typeof NavbarIndexRoute
+  ShiningButtonIndexRoute: typeof ShiningButtonIndexRoute
   TextRevealIndexRoute: typeof TextRevealIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/departure-board': {
-      id: '/departure-board'
-      path: '/departure-board'
-      fullPath: '/departure-board'
-      preLoaderRoute: typeof DepartureBoardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -92,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TextRevealIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shining-button/': {
+      id: '/shining-button/'
+      path: '/shining-button'
+      fullPath: '/shining-button'
+      preLoaderRoute: typeof ShiningButtonIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/navbar/': {
       id: '/navbar/'
       path: '/navbar'
@@ -104,8 +104,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DepartureBoardRoute: DepartureBoardRoute,
   NavbarIndexRoute: NavbarIndexRoute,
+  ShiningButtonIndexRoute: ShiningButtonIndexRoute,
   TextRevealIndexRoute: TextRevealIndexRoute,
 }
 export const routeTree = rootRouteImport
